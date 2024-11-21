@@ -104,14 +104,14 @@ override_dh_fixperms:
 	find $(TARGET_DIR)$(INSTALLATION_DIR)var/log/wazuh-server -type d -exec chmod 755 {} \; -o -type f -exec chmod 644 {} \;
 
 	# Binaries
+	chmod 750 $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-engine
 	chown wazuh:wazuh $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-engine
 	chmod 750 $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-apid
 	chown wazuh:wazuh $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-apid
-	chmod 750 $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-engine
-	chown wazuh:wazuh $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-comms-apid
 	chmod 750 $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-comms-apid
-	chown wazuh:wazuh $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-server
+	chown wazuh:wazuh $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-comms-apid
 	chmod 750 $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-server
+	chown wazuh:wazuh $(TARGET_DIR)$(INSTALLATION_DIR)bin/wazuh-server
 
 	# Services
 	chown root:root $(TARGET_DIR)/etc/init.d/wazuh-server
